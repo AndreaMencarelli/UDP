@@ -43,7 +43,7 @@ public class ClientUDP {
             * altrimenti si deve conoscere l'IP del server
             */
             serverAddress = InetAddress.getLocalHost();
-            System.out.println("Indirizzo del server trovato!"); 
+            System.out.println("Indirizzo del server è stato trovato"); 
             try {
                 dSocket = new DatagramSocket();
             } catch (SocketException ex) {
@@ -77,16 +77,16 @@ public class ClientUDP {
             dSocket.receive(inPacket);
             //si estrae il messaggio
             response = new String(inPacket.getData(), 0, inPacket.getLength());
-            System.out.println("Connessione stabilita!");
-            System.out.println("Data e ora del server: " + response);
-            System.out.println("Connessione chiusa!");
+            System.out.println("la connessione è stata stabilita con sucesso ");
+            System.out.println("la data e ora del server è: " + response);
+            System.out.println("la connessione  tra client e server è stata chiusa!");
             
             dSocket.close(); //si chiude la connessione
             
         } catch (IOException ex) { // eccezione se il metodo ricevi non viene eseguito corretamente 
             // come se fosse un if 
             Logger.getLogger(ClientUDP.class.getName()).log(Level.SEVERE, null, ex); // ricava l'errore.
-            System.out.println("Test"); // stampa test 
+            System.out.println("questo è un TEST"); // stampa test 
         }
     }
 }

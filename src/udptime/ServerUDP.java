@@ -39,7 +39,7 @@ public class ServerUDP{
         try {
             //si crea il socket e si associa alla porta specifica
             dSocket = new DatagramSocket(port);
-            System.out.println("Apertura porta in corso!");
+            System.out.println("Apertura della porta in corso.... ");
         } catch (SocketException ex) {
             Logger.getLogger(ServerUDP.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -47,7 +47,7 @@ public class ServerUDP{
 		
     public void ascolta(){
         try{
-            System.out.println("Server in ascolto sulla porta " + port + "!\n");
+            System.out.println("Server in ascolto sulla porta : " + port + "!\n");
             buffer = new byte[256];
             //si crea un datagramma UDP in cui trasportare il buffer di lunghezza length
             inPacket = new DatagramPacket(buffer, buffer.length);
@@ -65,7 +65,7 @@ public class ServerUDP{
 	clientPort = inPacket.getPort();
 	//si stampa a video il messaggio ricevuto dal client
 	messageIn = new String(inPacket.getData(), 0, inPacket.getLength());
-	System.out.println("SONO IL CLIENT " + clientAddress + ":" + clientPort + "> " + messageIn);
+	System.out.println("Ciao sono il client !  " + clientAddress + ":" + clientPort + "> " + messageIn);
     }
     
     public void invia(){
@@ -78,7 +78,7 @@ public class ServerUDP{
             outPacket = new DatagramPacket(messageOut.getBytes(), messageOut.length(), clientAddress, clientPort);
             //si invia il messaggio al client
             dSocket.send(outPacket);
-            System.out.println("Risposta inviata!");
+            System.out.println("Risposta inviata con sucesso");
         } catch (IOException ex) {
             Logger.getLogger(ServerUDP.class.getName()).log(Level.SEVERE, null, ex);
         }
